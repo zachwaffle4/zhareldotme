@@ -29,11 +29,11 @@
 	"scripts": {
 		"astro": "astro",
 		"build": "astro build",
-		"cf-typegen": "wrangler types",
-		"check": "astro build && tsc && wrangler deploy --dry-run",
-		"deploy": "wrangler deploy",
+		"cf-typegen": "bunx wrangler types",
+		"check": "astro build && tsc && bunx wrangler deploy --dry-run",
+		"deploy": "bunx wrangler deploy",
 		"dev": "astro dev",
-		"preview": "astro build && wrangler dev"
+		"preview": "astro build && bunx wrangler dev"
 	},
 	"type": "module"
 }

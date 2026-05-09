@@ -8,7 +8,7 @@
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
+	--gray: #60739F;
 	--gray-light: 229, 233, 240;
 	--gray-dark: 34, 41, 57;
 	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
@@ -16,6 +16,20 @@
 		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
 }
+
+.dark {
+	--accent: #6b7fff;
+	--accent-dark: #D94260;
+	--black: 224, 224, 224;
+	--gray: #d94260;
+	--gray-light: 57, 51, 44;
+	--gray-dark: 229, 233, 240;
+	--gray-gradient: rgba(var(--gray-light), 50%), #1a1a1a;
+	--box-shadow:
+		0 2px 6px rgba(0, 0, 0, 50%), 0 8px 24px rgba(0, 0, 0, 60%),
+		0 16px 32px rgba(0, 0, 0, 70%);
+}
+
 @font-face {
 	font-family: "Atkinson";
 	src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -30,6 +44,16 @@
 	font-style: normal;
 	font-display: swap;
 }
+
+html {
+	transition: background-color 0.3s ease, color 0.3s ease;
+	background: white;
+}
+
+html.dark {
+	background: #1a1a1a;
+}
+
 body {
 	font-family: "Atkinson", sans-serif;
 	margin: 0;
@@ -42,7 +66,15 @@ body {
 	color: rgb(var(--gray-dark));
 	font-size: 20px;
 	line-height: 1.7;
+	transition: background 0.3s ease, color 0.3s ease;
+	min-height: 100vh;
 }
+
+.dark body {
+	background: linear-gradient(var(--gray-gradient)) no-repeat, #1a1a1a;
+	background-size: 100% 600px;
+}
+
 main {
 	width: 720px;
 	max-width: calc(100% - 2em);
@@ -82,6 +114,9 @@ a {
 	color: var(--accent);
 }
 a:hover {
+	color: var(--accent-dark);
+}
+.dark a:hover {
 	color: var(--accent);
 }
 p {
@@ -110,9 +145,16 @@ code {
 	background-color: rgb(var(--gray-light));
 	border-radius: 2px;
 }
+.dark code {
+	background-color: rgba(var(--gray-light), 0.2);
+}
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
+	background-color: rgba(var(--gray-light), 0.3) !important;
+}
+.dark pre {
+	background-color: rgba(0, 0, 0, 0.5) !important;
 }
 pre > code {
 	all: unset;
