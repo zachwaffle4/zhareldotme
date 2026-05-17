@@ -35,7 +35,7 @@ Here's how the lifecycle of an OpMode works in practice:
 
 **When the operator selects an OpMode on the Driver Station**, a new instance of your OpMode class is created. This is a fresh object, so you can initialize any state you need in the constructor.
 
-**While an OpMode is selected but the robot disabled**, the library calls `disabledPeriodic()` regularly (as determined by `OpModeRobot#getPeriod()`. This is a great place to update dashboard displays, read sensors, or preview what you're about to do. The library guarantees that `disabledPeriodic()` will be called at least once before the robot transitions to enabled state, so you can count on any initialization logic here being run.
+**While an OpMode is selected but the robot is disabled**, the library calls `disabledPeriodic()` regularly (as determined by `OpModeRobot#getPeriod()`. This is a great place to update dashboard displays, read sensors, or preview what you're about to do. The library guarantees that `disabledPeriodic()` will be called at least once before the robot transitions to enabled state, so you can count on any initialization logic here being run.
 
 **When the robot transitions from disabled to enabled**, `start()` is called exactly once. 
 
