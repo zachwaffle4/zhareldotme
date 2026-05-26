@@ -2,6 +2,7 @@
 title: "A Closer Look at OpModes"
 description: "A more detailed look at OpModes, what they are and options for using them"
 pubDate: "May 16 2026"
+heroImage: "/ds-opmodes.jpg"
 ---
 
 Note for FTC Readers: the concept of an OpMode in WPILib is very different from the concept of an OpMode in the FTC SDK
