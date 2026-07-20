@@ -2,7 +2,7 @@
 title: "A Closer Look at OpModes"
 description: "A more detailed look at OpModes, what they are and options for using them"
 pubDate: "May 16 2026"
-heroImage: "/ds-opmodes.jpg"
+heroImage: "/ds-opmodes.png"
 ---
 
 Note for FTC Readers: the concept of an OpMode in WPILib is very different from the concept of an OpMode in the FTC SDK
@@ -11,7 +11,7 @@ WPILib 2027 includes the concept of an OpMode, but what exactly is an OpMode?
 
 At its core, an OpMode is simply a packet of data communicated between the Driver Station and the robot. It contains the following information: name, description, group, and robot mode (autonomous, teleop, or utility), and an id that is calculated based on its name and robot mode. Robot code can create a list of these OpMode packets and send them to the Driver Station, which will display them by mode:
 
-![OpMode Selection Screen](/ds-opmodes.jpg)
+![OpMode Selection Screen](/ds-opmodes.png)
 
 Users can then determine what OpMode is selected using the `RobotState.getOpModeId()` method, which returns the id of the selected OpMode, or `RobotState.getOpMode()`, which returns the name. Note that the robot has to be in the appropriate mode (autonomous, teleop, or utility) for the OpMode to be selected. For example, if the robot is in teleop mode, only teleop OpModes can be selected.
 
