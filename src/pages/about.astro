@@ -1,86 +1,345 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_TITLE } from '../consts';
+
+const title = `About | ${SITE_TITLE}`;
+const description = 'CS & Biology Student at Northeastern University';
+const updatedDate = new Date('July 30 2026');
+
+type Entry = { when: string; what: string; where?: string; detail: string };
+
+const experience: Entry[] = [
+	{
+		when: 'Nov 2025 – Present',
+		what: 'FIRST Technical Advisor (Volunteer)',
+		where: 'FIRST Long Island & Boston Tech Initiative',
+		detail:
+			'Planning, setting up and running qualifiers and regional championship tournaments in Massachusetts. Providing support to teams experiencing technical difficulties, particularly with software and electrical issues. Training and supporting other technical volunteers.',
+	},
+	{
+		when: 'Dec 2023 – Feb 2024',
+		what: 'Machine Learning Intern',
+		where: 'EduBeyond',
+		detail:
+			'Created and deployed large language model-backed systems to demonstrate to clients, including use of the ChatGPT API and Flowchat libraries. Developed company website features using React.',
+	},
+];
+
+const openSource: Entry[] = [
+	{
+		when: '2025 – Present',
+		what: 'Contributor',
+		where: 'WPILib',
+		detail:
+			'Contributing kinematics, motion planning, and robot operation code for the FIRST Robotics Competition and FIRST Tech Challenge standard library.',
+	},
+	{
+		when: '2024 – Present',
+		what: 'Maintainer & Controls Project Lead',
+		where: 'NextFTC',
+		detail:
+			'Developing a command framework for FIRST Tech Challenge robots and leading the controls subproject.',
+	},
+];
+
+const campus: Entry[] = [
+	{
+		when: 'Spring 2026 – Present',
+		what: 'Software Team',
+		where: 'NU Satellite Laboratory',
+		detail:
+			'Assisting in software development for small satellites, including low-level programming for board-to-board communication.',
+	},
+];
+
+const skills = [
+	{
+		label: 'Languages',
+		items: ['Python', 'PyTorch', 'NumPy', 'Java', 'Kotlin', 'TypeScript', 'React', 'C++'],
+	},
+	{ label: 'Tools', items: ['Git', 'Microsoft 365', 'Google Workspace'] },
+	{ label: 'Domains', items: ['Data Analysis', 'Controls', 'Machine Learning'] },
+];
+
+const awards = [
+	{ year: '2025', name: 'National Merit Scholar' },
+	{ year: '2024', name: 'Rensselaer Medal' },
+	{ year: '2024', name: "FIRST Tech Challenge: Dean's List Semifinalist" },
+];
 ---
 
-<Layout
-	title="About Me"
-	description="CS & Biology Student at Northeastern University"
-	pubDate={new Date('May 09 2026')}
-	updatedDate={new Date('July 30 2026')}
-	heroImage="/about-hero.png"
->
-	<h2>Education</h2>
-	<p>
-		<strong>Northeastern University</strong> (Sept 2025 - May 2029, Expected)<br />
-		BS, Computer Science and Biology<br />
-		John Martinson Honors Program Participant<br />
-		<em>Relevant Coursework:</em> Program Design and Implementation I/II, Discrete Structures, Databases, Algorithms
-	</p>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} image="/about-hero.png" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<img class="hero" src="/about-hero.png" width={1020} height={510} alt="" />
 
-	<h2>About Me</h2>
-	<p>
-		I'm a Computer Science and Biology student at Northeastern University with experience in machine learning research
-		and robotics/control theory. I'm passionate about the intersection of technology and life sciences, particularly
-		in bioinformatics and computational biology.
-	</p>
+			<section class="intro">
+				<h1>About Me</h1>
+				<p class="lead">
+					I'm a Computer Science and Biology student at Northeastern University with experience
+					in machine learning research and robotics/control theory. I'm passionate about the
+					intersection of technology and life sciences, particularly in bioinformatics and
+					computational biology.
+				</p>
+				<p class="meta">Last updated <FormattedDate date={updatedDate} /></p>
+			</section>
 
-	<h2>Experience</h2>
+			<section>
+				<h2 class="section-title">Education</h2>
+				<div class="card education">
+					<div class="entry-head">
+						<h3>BS, Computer Science and Biology</h3>
+						<span class="meta when">Sept 2025 – May 2029 (Expected)</span>
+					</div>
+					<p class="where">Northeastern University</p>
+					<p>
+						John Martinson Honors Program Participant<br />
+						<em>Relevant coursework:</em> Program Design and Implementation I/II, Discrete
+						Structures, Databases, Algorithms
+					</p>
+				</div>
+			</section>
 
-	<h3>Machine Learning Intern - EduBeyond</h3>
-	<p><em>December 2023 - February 2024</em></p>
-	<p>
-		Created and deployed large language model-backed systems to demonstrate to clients, including use of the ChatGPT API
-		and Flowchat libraries. Developed company website features using React.
-	</p>
+			{
+				[
+					{ heading: 'Experience', entries: experience },
+					{ heading: 'Open Source', entries: openSource },
+					{ heading: 'Campus Involvement', entries: campus },
+				].map((group) => (
+					<section>
+						<h2 class="section-title">{group.heading}</h2>
+						<ol class="timeline">
+							{group.entries.map((entry) => (
+								<li>
+									<div class="entry-head">
+										<h3>{entry.what}</h3>
+										<span class="meta when">{entry.when}</span>
+									</div>
+									{entry.where && <p class="where">{entry.where}</p>}
+									<p class="detail">{entry.detail}</p>
+								</li>
+							))}
+						</ol>
+					</section>
+				))
+			}
 
-	<h3>FIRST Technical Advisor (Volunteer)</h3>
-	<p><em>November 2025 - Present</em></p>
-	<p>
-		Planning, setting up and running qualifiers and regional championship tournaments in Massachusetts.
-		Providing support to teams experiencing technical difficulties, particularly with software and electrical issues.
-		Training and supporting other technical volunteers.
-	</p>
+			<section>
+				<h2 class="section-title">Technical Skills</h2>
+				<dl class="skills">
+					{
+						skills.map((group) => (
+							<div class="skill-row">
+								<dt>{group.label}</dt>
+								<dd>
+									{group.items.map((item) => (
+										<span class="pill">{item}</span>
+									))}
+								</dd>
+							</div>
+						))
+					}
+				</dl>
+			</section>
 
-	<h2>Open Source Contributions</h2>
+			<section>
+				<h2 class="section-title">Awards &amp; Recognition</h2>
+				<ul class="awards">
+					{
+						awards.map((award) => (
+							<li>
+								<span class="meta year">{award.year}</span>
+								<span>{award.name}</span>
+							</li>
+						))
+					}
+				</ul>
+			</section>
 
-	<h3>WPILib Contributor</h3>
-	<p>
-		Contributing kinematics, motion planning, and robot operation code for the FIRST Robotics Competition
-		and FIRST Tech Challenge standard library.
-	</p>
+			<section class="contact card">
+				<h2>Contact</h2>
+				<p class="cta">
+					<a class="btn primary" href="mailto:harel.z@northeastern.edu">
+						harel.z@northeastern.edu
+					</a>
+					<a class="btn" href="https://github.com/zachwaffle4">@zachwaffle4</a>
+					<a class="btn" href="tel:+15164602295">(516) 460-2295</a>
+				</p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
 
-	<h3>NextFTC - Maintainer & Controls Project Lead</h3>
-	<p>
-		Developing command framework for FIRST Tech Challenge robots and leading the controls subproject.
-	</p>
+<style>
+	main {
+		margin: auto;
+		padding: 2rem 1rem 3rem;
+		width: 860px;
+		max-width: calc(100% - 2rem);
+		line-height: 1.6;
+	}
+	.hero {
+		display: block;
+		width: 100%;
+		border-radius: var(--radius);
+		box-shadow: var(--card-shadow);
+	}
+	.intro {
+		margin: 2.5rem 0 3rem;
+	}
+	.lead {
+		max-width: 40em;
+		font-size: 1.15rem;
+		color: rgb(var(--gray-dark));
+	}
+	.intro .meta {
+		margin: 0;
+	}
+	section {
+		margin: 3rem 0;
+	}
 
-	<h2>Campus Involvement</h2>
+	/* Timeline */
+	.timeline {
+		list-style: none;
+		margin: 0;
+		padding: 0 0 0 1.5rem;
+		border-left: 2px solid rgb(var(--border));
+	}
+	.timeline li {
+		position: relative;
+		padding-bottom: 2rem;
+	}
+	.timeline li:last-child {
+		padding-bottom: 0;
+	}
+	.timeline li::before {
+		content: '';
+		position: absolute;
+		top: 0.55em;
+		left: calc(-1.5rem - 6px);
+		width: 10px;
+		height: 10px;
+		border: 2px solid var(--accent);
+		border-radius: 50%;
+		background: rgb(var(--surface));
+	}
+	.entry-head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+	.entry-head h3 {
+		margin: 0;
+		font-size: 1.15rem;
+	}
+	.when {
+		flex-shrink: 0;
+	}
+	.where {
+		margin: 0.15em 0 0;
+		color: var(--accent);
+		font-size: 0.95rem;
+		font-weight: 700;
+	}
+	.detail {
+		margin: 0.5em 0 0;
+		font-size: 0.98rem;
+	}
+	.education p {
+		margin-bottom: 0;
+	}
+	.education .where {
+		margin-bottom: 0.5em;
+	}
+	.education:hover {
+		border-color: rgb(var(--border));
+		box-shadow: none;
+	}
 
-	<h3>NU Satellite Laboratory - Software Team</h3>
-	<p><em>Spring 2026 - Present</em></p>
-	<p>
-		Assisting in software development for small satellites, including low-level programming for
-		board-to-board communication.
-	</p>
+	/* Skills */
+	.skills {
+		margin: 0;
+	}
+	.skill-row {
+		display: grid;
+		grid-template-columns: 8rem 1fr;
+		gap: 1rem;
+		padding: 0.75rem 0;
+		border-bottom: 1px solid rgb(var(--border));
+	}
+	.skill-row:last-child {
+		border-bottom: none;
+	}
+	.skills dt {
+		font-weight: 700;
+		font-size: 0.95rem;
+	}
+	.skills dd {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin: 0;
+	}
 
-	<h2>Technical Skills</h2>
-	<ul>
-		<li><strong>Languages:</strong> Python (PyTorch, NumPy), Java, Kotlin, JavaScript/TypeScript (React), C++</li>
-		<li><strong>Tools:</strong> Git, Microsoft 365, Google Workspace</li>
-		<li><strong>Domains:</strong> Data Analysis, Controls, Machine Learning</li>
-	</ul>
+	/* Awards */
+	.awards {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.awards li {
+		display: flex;
+		gap: 1rem;
+		padding: 0.6rem 0;
+		border-bottom: 1px solid rgb(var(--border));
+		font-size: 1rem;
+	}
+	.awards li:last-child {
+		border-bottom: none;
+	}
+	.year {
+		flex-shrink: 0;
+		width: 3.5rem;
+		font-variant-numeric: tabular-nums;
+	}
 
-	<h2>Awards & Recognition</h2>
-	<ul>
-		<li>National Merit Scholar (2025)</li>
-		<li>Rensselaer Medal (2024)</li>
-		<li>FIRST Tech Challenge: Dean's List Semifinalist (2024)</li>
-	</ul>
+	.contact {
+		padding: 2rem;
+	}
+	.contact h2 {
+		margin-bottom: 1rem;
+		font-size: 1.35rem;
+	}
+	.contact:hover {
+		border-color: rgb(var(--border));
+		box-shadow: none;
+	}
+	.cta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin: 0;
+	}
 
-	<h2>Contact</h2>
-	<p>
-		Email: <a href="mailto:harel.z@northeastern.edu">harel.z@northeastern.edu</a><br />
-		GitHub: <a href="https://github.com/zachwaffle4">@zachwaffle4</a><br />
-		Phone: (516) 460-2295
-	</p>
-</Layout>
+	@media (max-width: 720px) {
+		.entry-head {
+			flex-direction: column;
+			gap: 0.1rem;
+		}
+		.skill-row {
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+		}
+	}
+</style>

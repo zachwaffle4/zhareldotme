@@ -5,11 +5,9 @@ import sitemap from "@astrojs/sitemap";
 
 import cloudflare from "@astrojs/cloudflare";
 
-import vue from "@astrojs/vue";
-
 // https://astro.build/config
 export default defineConfig({
     site: "https://zharel.me",
-    integrations: [mdx(), sitemap(), vue()],
+    integrations: [mdx(), sitemap()],
     adapter: cloudflare(),
 });

@@ -20,13 +20,22 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				margin: 0;
 			}
 			.hero-image {
-				width: 100%;
+				width: 900px;
+				max-width: calc(100% - 2em);
+				margin: 2em auto 0;
 			}
 			.hero-image img {
 				display: block;
+				/* Keep the image's own aspect ratio — hero images vary from wide
+				   screenshots to near-square diagrams. Height is capped so tall
+				   images don't push the post off the screen. */
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 70vh;
 				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
+				border-radius: var(--radius);
+				box-shadow: var(--card-shadow);
 			}
 			.prose {
 				width: 720px;
@@ -36,20 +45,25 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				color: rgb(var(--gray-dark));
 			}
 			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
+				margin-bottom: 2em;
+				padding: 2em 0 1.5em;
 				text-align: center;
-				line-height: 1;
+				line-height: 1.2;
+				border-bottom: 1px solid rgb(var(--border));
 			}
 			.title h1 {
-				margin: 0 0 0.5em 0;
+				margin: 0 0 0.3em 0;
 			}
 			.title p {
-				margin: 0 0 0.5em 0;
+				margin: 0 auto;
+				max-width: 34em;
+				color: rgb(var(--gray-dark));
+				font-size: 1.1rem;
 			}
 			.date {
-				margin-bottom: 0.5em;
+				margin-bottom: 1em;
 				color: rgb(var(--gray));
+				font-size: 0.9rem;
 			}
 			.last-updated-on {
 				font-style: italic;
@@ -62,7 +76,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && <img src={heroImage} alt="" />}
 				</div>
 				<div class="prose">
 					<div class="title">
@@ -78,7 +92,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						</div>
 						<h1>{title}</h1>
 						<p>{description}</p>
-						<hr />
 					</div>
 					<slot />
 				</div>
