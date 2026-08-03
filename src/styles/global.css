@@ -5,7 +5,7 @@
  */
 
 :root {
-	--accent: #2337ff;
+	--accent: #d94260;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
 	--gray: #60739F;
@@ -25,10 +25,10 @@
 }
 
 .dark {
-	--accent: #6b7fff;
-	--accent-dark: #D94260;
+	--accent: #D94260;
+	--accent-dark: #6b7fff;
 	--black: 224, 224, 224;
-	--gray: #d94260;
+	--gray: #60739F;
 	--gray-light: 57, 51, 44;
 	--gray-dark: 229, 233, 240;
 	--gray-gradient: rgba(var(--gray-light), 50%), #1a1a1a;
