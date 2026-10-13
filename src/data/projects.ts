@@ -15,7 +15,7 @@ export const projects: Project[] = [
 		name: 'WPILib',
 		category: 'Open Source',
 		role: 'Contributor',
-		years: '2025 – Present',
+		years: 'Aug 2025 – Present',
 		blurb:
 			'Kinematics, motion planning, and robot operation code for the standard library used by every FIRST Robotics Competition and FIRST Tech Challenge team.',
 		tech: ['C++', 'Java'],
@@ -37,9 +37,10 @@ export const projects: Project[] = [
 	{
 		name: 'FRCSoftware.org',
 		category: 'Open Source',
-		role: 'Project Lead',
-		years: '2026 – Present',
-		blurb: 'A beginner-friendly tutorial for FRC students and mentors.',
+		role: 'Co-Lead Maintainer',
+		years: 'May 2026 – Present',
+		blurb:
+			'An open-source guide and tutorial for programming FIRST Robotics Competition robots. I lead infrastructure and curriculum development.',
 		tech: ['TypeScript'],
 		links: [
 			{ label: 'FRCSoftware.org', href: 'https://frcsoftware.org/' },
@@ -82,17 +83,28 @@ export const projects: Project[] = [
 
 	{
 		name: 'zharel.me',
-		category: 'Misc',
+		category: 'Web',
 		years: '2026 – Present',
 		blurb:
 			'This site. A static Astro build deployed to Cloudflare Workers, with content collections for the blog.',
 		tech: ['Astro', 'Cloudflare Workers'],
 		links: [{ label: 'GitHub', href: 'https://github.com/zachwaffle4/zhareldotme' }],
 	},
+	{
+		name: 'nsl.space',
+		category: 'Web',
+		years: '2026 – Present',
+		blurb: 'The official website of the Northeastern Satellite Lab, built with Astro and Cloudflare Workers, and designed to be maintainable for future generations of the club.',
+		tech: ['Astro', 'Cloudflare Workers'],
+		links: [
+			{label: 'nsl.space', href: 'https://nsl.space'},
+			{label: 'GitHub', href: 'https://github.com/northeasternsatellitelab/nsldotspace'}
+		]
+	}
 ];
 
 export const categories = [
 	'Open Source',
 	'Tools',
-	'Misc',
+	'Web',
 ] as const satisfies readonly Project['category'][];

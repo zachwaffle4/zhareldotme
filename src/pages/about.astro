@@ -7,30 +7,44 @@ import { SITE_TITLE } from '../consts';
 
 const title = `About | ${SITE_TITLE}`;
 const description = 'CS & Biology Student at Northeastern University';
-const updatedDate = new Date('July 30 2026');
+const updatedDate = new Date('October 13 2026');
 
 type Entry = { when: string; what: string; where?: string; detail: string };
 
 const experience: Entry[] = [
 	{
+		when: 'Sept 2026 – Present',
+		what: 'Teaching Assistant, Program Design and Implementation II',
+		where: 'Northeastern University',
+		detail:
+			'Facilitating weekly recitation sections, including assisting and mentoring students in Java environment and code problems, and leading in-person "codewalk" sessions to verify student understanding of their work. Leading office hours to provide additional programming support and answering student questions through the course discussion platform.',
+	},
+	{
 		when: 'Nov 2025 – Present',
 		what: 'FIRST Technical Advisor (Volunteer)',
-		where: 'FIRST Long Island & Boston Tech Initiative',
+		where: 'New England FIRST & FIRST Long Island',
 		detail:
-			'Planning, setting up and running qualifiers and regional championship tournaments in Massachusetts. Providing support to teams experiencing technical difficulties, particularly with software and electrical issues. Training and supporting other technical volunteers.',
+			'Planning, setting up, and running FIRST Tech Challenge qualifiers and regional championship tournaments for over 135 middle and high-school robotics teams across Massachusetts and Long Island. Providing support to teams experiencing technical difficulties, particularly with software and electrical issues. Training and supporting other technical volunteers.',
 	},
 	{
 		when: 'Dec 2023 – Feb 2024',
 		what: 'Machine Learning Intern',
 		where: 'EduBeyond',
 		detail:
-			'Created and deployed large language model-backed systems to demonstrate to clients, including use of the ChatGPT API and Flowchat libraries. Developed company website features using React.',
+			'Created and deployed large language model-backed systems to demonstrate to clients, including use of the ChatGPT API and Flowchat libraries. Developed company website features using TypeScript and React.',
 	},
 ];
 
 const openSource: Entry[] = [
 	{
-		when: '2025 – Present',
+		when: 'May 2026 – Present',
+		what: 'Co-Lead Maintainer',
+		where: 'FRC and FTC Software',
+		detail:
+			'Leading infrastructure and curriculum development for frcsoftware.org, an open-source guide and tutorial for programming FIRST Robotics Competition robots.',
+	},
+	{
+		when: 'Aug 2025 – Present',
 		what: 'Contributor',
 		where: 'WPILib',
 		detail:
@@ -47,20 +61,47 @@ const openSource: Entry[] = [
 
 const campus: Entry[] = [
 	{
-		when: 'Spring 2026 – Present',
-		what: 'Software Team',
-		where: 'NU Satellite Laboratory',
+		when: 'Jan 2026 – Present',
+		what: 'Assistant Command/Data Handling Lead and Website Lead',
+		where: 'Northeastern Satellite Laboratory',
 		detail:
-			'Assisting in software development for small satellites, including low-level programming for board-to-board communication.',
+			'Developing flight software for small satellites using the F Prime ecosystem, primarily focusing on board-to-board communication using CAN. Developed the club logo, branding standards, and website for communication with other labs, clubs, universities, and sponsors.',
+	},
+	{
+		when: 'Sept 2025 – Present',
+		what: 'Assistant Music Director (Fall 2025, Spring 2026), Pit Orchestra (Summer 2026)',
+		where: 'NUStage Musical Theater Company',
+		detail:
+			'Directed music for two shows in an assistant capacity, including analyzing scores across multiple genres, leading rehearsals for cast members of varying vocal types and skill levels, and arranging harmonies. Balanced line-by-line audio levels during performances to ensure an engaging and clear experience for audiences.',
 	},
 ];
 
 const skills = [
 	{
 		label: 'Languages',
-		items: ['Python', 'PyTorch', 'NumPy', 'Java', 'Kotlin', 'TypeScript', 'React', 'C++'],
+		items: [
+			'Python',
+			'TensorFlow',
+			'PyTorch',
+			'NumPy',
+			'Java',
+			'Kotlin',
+			'JavaScript',
+			'TypeScript',
+			'Svelte',
+			'Astro',
+			'C',
+			'C++',
+			'SQL',
+			'SQLite',
+			'MySQL',
+			'PostgreSQL',
+		],
 	},
-	{ label: 'Tools', items: ['Git', 'Microsoft 365', 'Google Workspace'] },
+	{
+		label: 'Tools',
+		items: ['Unix', 'Git', 'GitHub', 'Microsoft 365', 'Google Workspace', 'Cloudflare'],
+	},
 	{ label: 'Domains', items: ['Data Analysis', 'Controls', 'Machine Learning'] },
 ];
 
@@ -99,11 +140,23 @@ const awards = [
 						<h3>BS, Computer Science and Biology</h3>
 						<span class="meta when">Sept 2025 – May 2029 (Expected)</span>
 					</div>
-					<p class="where">Northeastern University</p>
+					<p class="where">Northeastern University, Boston, MA</p>
 					<p>
 						John Martinson Honors Program Participant<br />
 						<em>Relevant coursework:</em> Program Design and Implementation I/II, Discrete
-						Structures, Databases, Algorithms
+						Structures, Databases, Computer Systems, Algorithms, Genetics and Molecular Biology,
+						Computational Tools for Genome Analysis
+					</p>
+				</div>
+				<div class="card education">
+					<div class="entry-head">
+						<h3>High School Diploma</h3>
+						<span class="meta when">Sept 2021 – June 2025</span>
+					</div>
+					<p class="where">Half Hollow Hills High School West, Dix Hills, NY</p>
+					<p>
+						<em>Academic Research Program:</em> researched the use of machine learning to aid in
+						diagnoses of diseases including major depression
 					</p>
 				</div>
 			</section>
@@ -258,6 +311,9 @@ const awards = [
 	}
 	.education p {
 		margin-bottom: 0;
+	}
+	.education + .education {
+		margin-top: 1rem;
 	}
 	.education .where {
 		margin-bottom: 0.5em;
