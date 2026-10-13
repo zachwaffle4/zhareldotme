@@ -26,11 +26,11 @@
 		"publish": true
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "14.1.7",
-		"@astrojs/mdx": "7.0.5",
+		"@astrojs/cloudflare": "14.3.4",
+		"@astrojs/mdx": "8.0.3",
 		"@astrojs/rss": "4.0.19",
-		"@astrojs/sitemap": "3.7.3",
-		"astro": "7.1.6",
+		"@astrojs/sitemap": "3.7.4",
+		"astro": "7.3.8",
 		"typescript": "5.9.3"
 	},
 	"devDependencies": {
