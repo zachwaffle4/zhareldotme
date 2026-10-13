@@ -3,7 +3,7 @@ title: "A Closer Look at OpModes"
 description: "A more detailed look at OpModes, what they are and options for using them"
 heroImage: "/ds-opmodes.png"
 pubDate: "May 16 2026"
-updatedDate: "July 20 2026"
+updatedDate: "October 13 2026"
 ---
 
 Note for FTC Readers: the concept of an OpMode in WPILib is very different from the concept of an OpMode in the FTC SDK
@@ -51,9 +51,13 @@ Notably, if a different OpMode is selected while the robot is enabled, the robot
 
 After the old OpMode is closed, a brand new OpMode object is constructed based on what the Driver Station is showing. In teleop, autonomous, and utility modes, the dropdown selection stays the same as before, so you'll typically construct the same OpMode class again. In match mode (or when connected to the FMS), only the selected autonomous OpMode is constructed initially. Once autonomous completes, the selected teleop OpMode is then constructed. This design ensures that only one OpMode object is ever alive at a time.
 
-## Commands v3 and `OpModeTriggers`
+## Commands v3 and OpMode-Scoped Bindings
 
-The new Commands v3 library includes automatic scoping of command and triggers to the currently active OpMode. This means that you can create triggers that are only active when a specific OpMode is selected or started. This allows you to run code in response to OpMode changes without having to extend `OpModeRobot`.
+The new Commands v3 library includes automatic scoping of command and triggers to the currently active OpMode. This means that you can create triggers that are only active when a specific OpMode is selected or started. This allows you to run code in response to OpMode changes.
+
+> [!IMPORTANT]
+> The following content referred to a proposal that has since been denied.
+> It is left here for historical reference.
 
 The `OpModeTriggers` class also provides access to three triggers for a given OpMode:
 - `loaded()`: Triggered when the OpMode is selected on the Driver Station, regardless of whether the robot is enabled or disabled.
