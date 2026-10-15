@@ -12,7 +12,8 @@
 		"check": "astro build && tsc && bunx wrangler deploy --dry-run",
 		"deploy": "bunx wrangler deploy",
 		"dev": "astro dev",
-		"preview": "astro build && bunx wrangler dev"
+		"preview": "astro build && bunx wrangler dev",
+		"resume": "typst compile resume.typ public/resume.pdf"
 	},
 	"type": "module",
 	"cloudflare": {

@@ -15,6 +15,9 @@ export default defineConfig({
             remarkPlugins: [remarkGithubBlockquoteAlert],
         }),
     },
+    redirects: {
+        "/resume": "/resume.pdf",
+    },
     integrations: [mdx(), sitemap()],
     adapter: cloudflare(),
 });
